@@ -2,7 +2,7 @@
   "name": "inventory-app",
   "version": "1.0.0",
   "description": "",
-  "main": "items.js",
+  "main": "index.js",
   "scripts": {
     "install-server": "cd server && npm install",
     "start-server": "cd server && npm start",
