@@ -37,7 +37,7 @@ const ItemForm = () => {
       imageURL,
     };
 
-    axios.post('http://localhost:3001/items', newItem)
+    axios.post('https://inventory-app-ibwz.onrender.com/', newItem)
       .then(response => {
         console.log(response.data);
         setItemId(itemId+1);
