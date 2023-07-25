@@ -5,6 +5,11 @@ const itemReducer = (state = [], action) => {
         ...state,
         items: [...state.items, action.payload],
       };
+    case 'UPDATE_ITEMS':
+      return {
+        ...state,
+        items: action.payload,
+      };
     case 'SELECT_ITEM':
       return {
         ...state,

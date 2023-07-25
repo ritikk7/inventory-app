@@ -18,3 +18,10 @@ export const deleteItem = (itemId) => {
       payload: itemId,
     };
 };
+
+export const updateItems = (items) => {
+    return {
+        type: 'UPDATE_ITEMS',
+        payload: items,
+    };
+};

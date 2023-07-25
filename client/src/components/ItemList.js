@@ -1,11 +1,10 @@
 import React, { useState, useEffect} from 'react';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectItem } from '../actions/ItemActions';
+import { selectItem, updateItems } from '../actions/ItemActions';
 
 const ItemList = () => {
-  // const items = useSelector((state) => state.items);
-  const [items, setItems] = useState([]);
+  const items = useSelector((state) => state.items);
   // const [sortParam, setSortParam] = useState('');
   const [minPrice, setMinPrice] = useState('');
   const [submittedMinPrice, setSubmittedMinPrice] = useState('');
@@ -15,18 +14,18 @@ const ItemList = () => {
     axios.get(`https://inventory-app-ibwz.onrender.com/${submittedMinPrice ? `?minPrice=${submittedMinPrice}` : ''}`)
       .then(response => {
         if (Array.isArray(response.data)) {
-          setItems(response.data);
+          dispatch(updateItems(response.data));
         } else {
           console.error(`Unexpected response data: ${response.data}`);
-          setItems([]);  // Set to an empty array in case of unexpected data
+          dispatch(updateItems([]));
         }
       })
       .catch(error => {
         console.error(`There was an error retrieving the items: ${error}`);
-        setItems([]);
+        dispatch(updateItems([]));
       });
 
-  }, [submittedMinPrice]);
+  }, [submittedMinPrice, dispatch]);
 
   const handleItemClick = (item) => {
     dispatch(selectItem(item));
@@ -44,7 +43,6 @@ const ItemList = () => {
   const handlePriceSubmit = (e) => {
     e.preventDefault();  // prevent page from refreshing on form submission
     setSubmittedMinPrice(minPrice);  // update the submittedMinPrice state
-    setItems([]);
   };
 
   // const handleSortChange = (e) => {
