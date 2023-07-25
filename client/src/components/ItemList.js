@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectItem, updateItems } from '../actions/ItemActions';
 
 const ItemList = () => {
-  const items = useSelector((state) => state.items);
+  const items = useSelector((state) => state.items) || [];
   // const [sortParam, setSortParam] = useState('');
   const [minPrice, setMinPrice] = useState('');
   const [submittedMinPrice, setSubmittedMinPrice] = useState('');
@@ -72,7 +72,7 @@ const ItemList = () => {
         </form>
       </div>
       <ul>
-        {items.map((item) => (
+        {items && items.map((item) => (
           <li key={item.name} onClick={() => handleItemClick(item)}>
             <img src={item.imageURL} alt={item.name} />
             <span>{item.name}</span>
