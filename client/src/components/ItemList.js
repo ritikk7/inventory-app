@@ -14,9 +14,18 @@ const ItemList = () => {
   useEffect(() => {
     axios.get(`https://inventory-app-ibwz.onrender.com/${submittedMinPrice ? `?minPrice=${submittedMinPrice}` : ''}`)
       .then(response => {
-        setItems(response.data);
+        if (Array.isArray(response.data)) {
+          setItems(response.data);
+        } else {
+          console.error(`Unexpected response data: ${response.data}`);
+          setItems([]);  // Set to an empty array in case of unexpected data
+        }
       })
-      .catch(error => console.error(`There was an error retrieving the items: ${error}`));
+      .catch(error => {
+        console.error(`There was an error retrieving the items: ${error}`);
+        setItems([]);
+      });
+
   }, [submittedMinPrice]);
 
   const handleItemClick = (item) => {
