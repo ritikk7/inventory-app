@@ -18,7 +18,7 @@ const ItemForm = () => {
 
   const fetchLatestItemId = () => {
     axios
-      .get('http://localhost:3001/items/latestId')
+      .get('https://inventory-app-ibwz.onrender.com/items/latestId')
       .then(response => {
         setItemId(response.data.latestId + 1);
       })

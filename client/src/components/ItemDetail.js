@@ -13,7 +13,7 @@ const ItemDetail = () => {
 
   const handleDeleteItem = () => {
     // dispatch(deleteItem(selectedItem.id));
-    axios.delete(`http://localhost:3001/items/${selectedItem.id}`)
+    axios.delete(`https://inventory-app-ibwz.onrender.com/items/${selectedItem.id}`)
       .then(response => {
         console.log(`The item ${response.data[0].name} was deleted.`);
       })

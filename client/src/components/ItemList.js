@@ -12,7 +12,7 @@ const ItemList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/items${submittedMinPrice ? `?minPrice=${submittedMinPrice}` : ''}`)
+    axios.get(`https://inventory-app-ibwz.onrender.com/items${submittedMinPrice ? `?minPrice=${submittedMinPrice}` : ''}`)
       .then(response => {
         setItems(response.data);
       })
