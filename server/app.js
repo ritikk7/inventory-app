@@ -15,6 +15,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../client/build')));
 
-app.use('/', itemsRouter);
+app.use('/api/items', itemsRouter);
 
 module.exports = app;

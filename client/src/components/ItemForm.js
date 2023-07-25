@@ -18,7 +18,7 @@ const ItemForm = () => {
 
   const fetchLatestItemId = () => {
     axios
-      .get('https://inventory-app-ibwz.onrender.com/latestId')
+      .get('https://inventory-app-ibwz.onrender.com/api/items/latestId')
       .then(response => {
         setItemId(response.data.latestId + 1);
       })
@@ -37,7 +37,7 @@ const ItemForm = () => {
       imageURL,
     };
 
-    axios.post('https://inventory-app-ibwz.onrender.com/', newItem)
+    axios.post('https://inventory-app-ibwz.onrender.com/api/items', newItem)
       .then(response => {
         console.log(response.data);
         setItemId(itemId+1);

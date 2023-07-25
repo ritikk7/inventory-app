@@ -11,7 +11,7 @@ const ItemList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    axios.get(`https://inventory-app-ibwz.onrender.com/${submittedMinPrice ? `?minPrice=${submittedMinPrice}` : ''}`)
+    axios.get(`https://inventory-app-ibwz.onrender.com/api/items${submittedMinPrice ? `?minPrice=${submittedMinPrice}` : ''}`)
       .then(response => {
         if (Array.isArray(response.data)) {
           dispatch(updateItems(response.data));
