@@ -31,3 +31,5 @@ jobs:
       run: |
         cd server
         npm test
+      env:
+        DB_CONNECTION_STRING: ${{ secrets.DB_CONNECTION_STRING }}
